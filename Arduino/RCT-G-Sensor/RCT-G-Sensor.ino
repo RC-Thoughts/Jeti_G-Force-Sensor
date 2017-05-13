@@ -421,7 +421,7 @@ void loop()
   aRoll = (aRoll * -1);
 
   // Debug - remove /* and */ below to enable
-
+  /*
   Serial.print("X: "); Serial.print(gX);
   Serial.print(" Y: "); Serial.print(gY);
   Serial.print(" Z: "); Serial.print(gZ);
@@ -432,7 +432,7 @@ void loop()
   Serial.print(" zCal: "); Serial.print(zCalVal);
   Serial.print(" pCal: "); Serial.print(pCalVal);
   Serial.print(" rCal: "); Serial.println(rCalVal);
-
+  */
 
   // Jeti stuff from here
   unsigned long time = millis();
