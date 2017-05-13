@@ -9,6 +9,7 @@ Jeti sensor values:
 - Z-Axis G-force (in G)
 - Pitch angle (in °)
 - Roll angle (in °)
+
 User calibratable for all values
 
 More info: https://www.rc-thoughts.com/jeti-g-force-sensor/
