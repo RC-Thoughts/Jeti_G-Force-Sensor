@@ -1,6 +1,6 @@
 /*
    -----------------------------------------------------------
-                   Jeti G-Sensor v 1.0
+                   Jeti G-Sensor v 1.1
    -----------------------------------------------------------
 
     Tero Salminen RC-Thoughts.com (c) 2017 www.rc-thoughts.com
@@ -23,7 +23,7 @@
     Shared under MIT-license by Tero Salminen (c) 2017
   -----------------------------------------------------------
 */
-String gVersion = "v.1.0";
+String gVersion = "v.1.1";
 #include <EEPROM.h>
 #include <stdlib.h>
 #include <SoftwareSerialJeti.h>
@@ -216,6 +216,7 @@ void setup()
   pinMode(JETI_RX, OUTPUT);
   JetiUartInit();
 
+  // Reset calibration values if never set
   if (xCalVal == 255) {
     xCalVal = 0;
   }
@@ -231,7 +232,24 @@ void setup()
   if (rCalVal == 255) {
     rCalVal = 0;
   }
-
+  
+  // Fix negative calibration values
+  if (xCalVal > 126) {
+    xCalVal = xCalVal - 255;
+  }
+  if (yCalVal > 126) {
+    yCalVal = yCalVal - 255;
+  }
+  if (zCalVal > 126) {
+    zCalVal = zCalVal - 255;
+  }
+  if (pCalVal > 126) {
+    pCalVal = pCalVal - 255;
+  }
+  if (rCalVal > 126) {
+    rCalVal = rCalVal - 255;
+  }
+  
   accel.begin();
   accel.setRange(ADXL345_RANGE_16_G);
   accel.setDataRate(ADXL345_DATARATE_400_HZ);
@@ -403,18 +421,18 @@ void loop()
   aRoll = (aRoll * -1);
 
   // Debug - remove /* and */ below to enable
-  /*
-    Serial.print("X: "); Serial.print(gX);
-    Serial.print(" Y: "); Serial.print(gY);
-    Serial.print(" Z: "); Serial.print(gZ);
-    Serial.print(" Pitch: "); Serial.print(aPitch);
-    Serial.print(" Roll: "); Serial.print(aRoll);
-    Serial.print(" xCal: "); Serial.print(xCalVal);
-    Serial.print(" yCal: "); Serial.print(yCalVal);
-    Serial.print(" zCal: "); Serial.print(zCalVal);
-    Serial.print(" pCal: "); Serial.print(pCalVal);
-    Serial.print(" rCal: "); Serial.println(rCalVal);
-  */
+
+  Serial.print("X: "); Serial.print(gX);
+  Serial.print(" Y: "); Serial.print(gY);
+  Serial.print(" Z: "); Serial.print(gZ);
+  Serial.print(" Pitch: "); Serial.print(aPitch);
+  Serial.print(" Roll: "); Serial.print(aRoll);
+  Serial.print(" xCal: "); Serial.print(xCalVal);
+  Serial.print(" yCal: "); Serial.print(yCalVal);
+  Serial.print(" zCal: "); Serial.print(zCalVal);
+  Serial.print(" pCal: "); Serial.print(pCalVal);
+  Serial.print(" rCal: "); Serial.println(rCalVal);
+
 
   // Jeti stuff from here
   unsigned long time = millis();
