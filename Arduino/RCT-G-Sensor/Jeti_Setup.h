@@ -3,8 +3,8 @@
 //
 
 // Sensor Name
-// Serial speed is 9900 for Pro Mini 3.3V due software serial
-JB.Init(F("RCT"), JETI_RX, 9900);
+// Serial speed is 10240 for Pro Mini 3.3V due software serial
+JB.Init(F("RCT"), JETI_RX, 10240);
 
 // Define Jeti Sensor value name & unit & variable & precision (decimals)
 // JB.setValue14(JB.addData(F("NAME"), F("UNIT")), &VARIABLE, DEC);
