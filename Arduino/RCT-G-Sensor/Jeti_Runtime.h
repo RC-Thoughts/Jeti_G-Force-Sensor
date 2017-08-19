@@ -6,17 +6,15 @@
 sensors_event_t event;
 accel.getEvent(&event);
 
-gX = (round(event.acceleration.x * 1.01972) / 10.0) - (xCalVal / 10);
-gY = (round(event.acceleration.y * 1.01972) / 10.0) - (yCalVal / 10);
-gZ = (round(event.acceleration.z * 1.01972) / 10.0) + (zCalVal / 10);
-gX = gX * -1.0;
-gY = gY * -1.0;
+gXc = (event.acceleration.x / 9.80665) - (xCalVal / 100);
+gYc = (event.acceleration.y / 9.80665) + (yCalVal / 100);
+gZc = (event.acceleration.z / 9.80665) + (zCalVal / 100);
+gXc = gXc * -1.0;
 
-gXc = gX * 10;
-gYc = gY * 10;
-gZc = gZ * 10;
+gXr = round(gXc * pow(10, Ndec));
+gYr = round(gYc * pow(10, Ndec));
+gZr = round(gZc * pow(10, Ndec));
 
-aPitch = atan2(event.acceleration.x, event.acceleration.z) * (180 / PI) - (pCalVal);
-aRoll = atan2(event.acceleration.y, event.acceleration.z) * (180 / PI) - (rCalVal);
-aPitch = (aPitch * -1);
-aRoll = (aRoll * -1);
+gXf = round(Xfilter(gXc) * pow(10, Ndec));
+gYf = round(Yfilter(gYc) * pow(10, Ndec));
+gZf = round(Zfilter(gZc) * pow(10, Ndec));

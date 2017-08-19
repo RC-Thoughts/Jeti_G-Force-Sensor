@@ -5,12 +5,12 @@
 // Jetibox Start Screen
 //
 #define ABOUT_1 F(" RCT Jeti Tools")
-#define ABOUT_2 F("    G-Sensor")
+#define ABOUT_2 F(" G-Sensor  v1.3")
 
 //
 // Max screens in jetibox (navigating over this goes to start)
 //
-#define MAX_SCREEN 8
+#define MAX_SCREEN 10
 
 //
 // Sensor ID (0x02) - Needs to be unique in a model
@@ -24,13 +24,17 @@ Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified();
 float gX = 0;
 float gY = 0;
 float gZ = 0;
-int gXc = 0;
-int gYc = 0;
-int gZc = 0;
-int aPitch = 0;
-int aRoll = 0;
+float gXc = 0;
+float gYc = 0;
+float gZc = 0;
+long gXr = 0;
+long gYr = 0;
+long gZr = 0;
+long gXf = 0;
+long gYf = 0;
+long gZf = 0;
 float xCalVal = EEPROM.read(0);
 float yCalVal = EEPROM.read(1);
 float zCalVal = EEPROM.read(2);
-float pCalVal = EEPROM.read(3);
-float rCalVal = EEPROM.read(4);
+int FilterOnOff = EEPROM.read(3);
+int Ndec = EEPROM.read(4);

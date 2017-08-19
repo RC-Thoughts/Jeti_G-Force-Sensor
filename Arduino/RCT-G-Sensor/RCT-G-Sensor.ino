@@ -1,6 +1,6 @@
 /*
    -----------------------------------------------------------
-                   Jeti G-Sensor v 1.2
+                   Jeti G-Sensor v 1.3
    -----------------------------------------------------------
 
     Tero Salminen RC-Thoughts.com (c) 2017 www.rc-thoughts.com
@@ -14,10 +14,11 @@
     - X-Axis G-force (in G)
     - Y-Axis G-force (in G)
     - Z-Axis G-force (in G)
-    - Pitch angle (in °)
-    - Roll angle (in °)
 
-    User calibratable for all values
+    Use selectable for 1 or 2 decimals
+
+    User calibratable for all values, user can select either
+    raw or filtered valuse. Value filtering by JSF-TC @RC-Groups
 
   -----------------------------------------------------------
     Shared under MIT-license by Tero Salminen (c) 2017
@@ -26,7 +27,7 @@
 
 #if defined(__AVR_ATmega328P__)
 #ifdef HardwareSerial_h
-  # error Must include disableserial.h before the Arduino serial driver is defined.
+# error Must include disableserial.h before the Arduino serial driver is defined.
 #endif
 #define HardwareSerial_h
 #endif
@@ -38,7 +39,7 @@
 #define GETCHAR_TIMEOUT_ms 100
 
 #ifndef JETI_RX
-  #define JETI_RX 3 // Pin for Jeti signal
+#define JETI_RX 3 // Pin for Jeti signal
 #endif
 
 #define MAX_CONFIG 4
@@ -51,6 +52,7 @@ JETI_Box_class JB;
 const unsigned char Jeti_SensorID3 = 0x02;
 
 #include "Jeti_Init.h"
+
 
 uint8_t frame[10];
 short cmpt = 0;
@@ -67,7 +69,7 @@ char * floatToString(char * outstr, float value, int places, int minwidth = 0) {
   int tenscount = 0;
   int i;
   float tempfloat = value;
-int c = 0;
+  int c = 0;
   int charcount = 1;
   int extra = 0;
   float d = 0.5;
@@ -106,7 +108,7 @@ int c = 0;
   }
   if (places > 0)
     outstr[c++] = '.';
-    for (i = 0; i < places; i++) {
+  for (i = 0; i < places; i++) {
     tempfloat *= 10.0;
     digit = (int) tempfloat;
     itoa(digit, &outstr[c++], 10);
@@ -154,7 +156,7 @@ void setup()
 
   JB.JetiBox_P(ABOUT_1, ABOUT_2);
 
-  #include "Jeti_Setup.h"
+#include "Jeti_Setup.h"
 
   JB.SendFrame();
   digitalWrite(13, LOW); // LED
@@ -170,25 +172,25 @@ void process_screens()
   {
     last_screen = current_screen;
   }
-  
-  #include "Jeti_JB_Screens.h"
+
+#include "Jeti_JB_Screens.h"
 }
 
 #include "Jeti_Functions.h"
 
 void loop()
 {
-  #include "Jeti_Runtime.h"
+#include "Jeti_Runtime.h"
 
   // Jeti Stuff
   if (current_screen != MAX_SCREEN)
-  current_config = 0; //zero 5th screen
-  
+    current_config = 0;
+
   process_screens();
 
   JB.txMode();
   JB.SendFrame();
   JB.rxMode();
 
-  #include "Jeti_JB_Navi.h"
+#include "Jeti_JB_Navi.h"
 }
