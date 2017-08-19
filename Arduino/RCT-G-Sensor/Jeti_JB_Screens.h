@@ -79,10 +79,10 @@ case 4 : {
 case 5 : {
     msg_line1[0] = 0; msg_line2[0] = 0;
     strcat_P((char*)&msg_line1, (const char*)F("Decimals: "));
-    if(Ndec == 1) {
+    if (Ndec == 1) {
       strcat_P((char*)&msg_line1, (const char*)F("0.0G"));
     }
-    if(Ndec == 2) {
+    if (Ndec == 2) {
       strcat_P((char*)&msg_line1, (const char*)F("0.00G"));
     }
     strcat_P((char*)&msg_line2, (const char*)F("Press Up/Dn"));
@@ -100,6 +100,13 @@ case 7 : {
     msg_line1[0] = 0; msg_line2[0] = 0;
     strcat_P((char*)&msg_line1, (const char*)F("Save Cur. Setup"));
     strcat_P((char*)&msg_line2, (const char*)F("Press Up & Dn"));
+    JB.JetiBox((char*)&msg_line1, (char*)&msg_line2);
+    break;
+  }
+case 99 : {
+    msg_line1[0] = 0; msg_line2[0] = 0;
+    strcat_P((char*)&msg_line1, (const char*)F("Settings Stored!"));
+    strcat_P((char*)&msg_line2, (const char*)F("Press < To Exit"));
     JB.JetiBox((char*)&msg_line1, (char*)&msg_line2);
     break;
   }

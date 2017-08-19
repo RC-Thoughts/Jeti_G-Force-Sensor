@@ -25,6 +25,9 @@ if ( (read != 240 ) && (read != 0) )
       }
       break;
     case 112 : // LEFT
+      if (current_screen == 99) {
+        current_screen = 0;
+      }
       if (current_screen != 0) {
         current_screen--;
       }
@@ -90,13 +93,13 @@ if ( (read != 240 ) && (read != 0) )
         yCalVal = 0;
         zCalVal = 0;
         FilterOnOff = 0;
-        Ndec = 0;
+        Ndec = 1;
         EEPROM.write(0, xCalVal);
         EEPROM.write(1, yCalVal);
         EEPROM.write(2, zCalVal);
         EEPROM.write(3, FilterOnOff);
         EEPROM.write(4, Ndec);
-        resetFunc();
+        current_screen == 99;
       }
       if (current_screen == 7) {
         // Store setup values to eeprom
@@ -105,7 +108,7 @@ if ( (read != 240 ) && (read != 0) )
         EEPROM.write(2, zCalVal);
         EEPROM.write(3, FilterOnOff);
         EEPROM.write(4, Ndec);
-        resetFunc();
+        current_screen == 99;
       }
       break;
     case 96 : // LEFT+RIGHT

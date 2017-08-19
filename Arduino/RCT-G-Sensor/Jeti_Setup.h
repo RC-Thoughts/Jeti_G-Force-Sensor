@@ -22,6 +22,12 @@ if (FilterOnOff == 255) {
 if (Ndec == 255) {
   Ndec = 1;
 }
+if (FilterOnOff > 2) {
+  FilterOnOff = 0;
+}
+if (Ndec > 2 or Ndec < 1) {
+  Ndec = 1;
+}
 
 // Fix negative calibration values
 if (xCalVal > 126) {
@@ -33,12 +39,6 @@ if (yCalVal > 126) {
 if (zCalVal > 126) {
   zCalVal = zCalVal - 256;
 }
-if (FilterOnOff > 2) {
-  FilterOnOff = 0;
-}
-if (Ndec > 2 or Ndec < 1) {
-  Ndec = 1;
-}
 
 // Define Jeti Sensor value name & unit & variable & precision (decimals)
 // JB.setValue30(JB.addData(F("NAME"), F("UNIT")), &VARIABLE, DEC);
@@ -48,18 +48,11 @@ if (Ndec > 2 or Ndec < 1) {
 // JB.setValue30 =  -8191 to 8191           (Variable is int)
 // JB.setValue30 =  -536870911 to 536870911 (Variable is long)
 
-if (FilterOnOff != 1) {
-  JB.setValue30(JB.addData(F("X-Axis"), F("G")), &gXr, Ndec);
-  JB.setValue30(JB.addData(F("Y-Axis"), F("G")), &gYr, Ndec);
-  JB.setValue30(JB.addData(F("Z-Axis"), F("G")), &gZr, Ndec);
-}
-
-if (FilterOnOff != 0) {
-  JB.setValue30(JB.addData(F("X-Axis"), F("G")), &gXf, Ndec);
-  JB.setValue30(JB.addData(F("Y-Axis"), F("G")), &gYf, Ndec);
-  JB.setValue30(JB.addData(F("Z-Axis"), F("G")), &gZf, Ndec);
-}
+JB.setValue30(JB.addData(F("X-Axis"), F("G")), &gXv, Ndec);
+JB.setValue30(JB.addData(F("Y-Axis"), F("G")), &gYv, Ndec);
+JB.setValue30(JB.addData(F("Z-Axis"), F("G")), &gZv, Ndec);
 
 accel.begin();
 accel.setRange(ADXL345_RANGE_16_G);
 accel.setDataRate(ADXL345_DATARATE_400_HZ);
+

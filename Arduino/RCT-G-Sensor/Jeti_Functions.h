@@ -2,9 +2,6 @@
 // For any extra functions needed before loop()
 //
 
-// Restart by user
-void(* resetFunc) (void) = 0;
-
 // Digital filter designed by mkfilter/mkshape/gencode   A.J. Fisher
 #define NZEROS 2
 #define NPOLES 2
