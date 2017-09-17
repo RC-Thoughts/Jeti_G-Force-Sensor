@@ -1,6 +1,6 @@
 /*
    -----------------------------------------------------------
-                   Jeti G-Sensor v 1.3
+                   Jeti G-Sensor v 1.4
    -----------------------------------------------------------
 
     Tero Salminen RC-Thoughts.com (c) 2017 www.rc-thoughts.com
@@ -15,7 +15,7 @@
     - Y-Axis G-force (in G)
     - Z-Axis G-force (in G)
 
-    Use selectable for 1 or 2 decimals
+    User selectable for 1 or 2 decimals
 
     User calibratable for all values, user can select either
     raw or filtered valuse. Value filtering by JSF-TC @RC-Groups

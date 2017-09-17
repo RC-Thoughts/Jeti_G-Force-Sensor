@@ -3,8 +3,9 @@
 //
 
 // Sensor Name
-// Serial speed is 10240 for Pro Mini 3.3V due software serial
-JB.Init(F("RCT-G"), JETI_RX, 10240);
+// Serial speed is 9700 for Pro Mini 3.3V due software serial
+// Serial speed is 9800 for Pro Mini 5V due software serial
+JB.Init(F("RCT-G"), JETI_RX, 9700);
 
 // Reset calibration values if never set
 if (xCalVal == 255) {

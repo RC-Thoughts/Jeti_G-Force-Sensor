@@ -52,3 +52,5 @@ float Zfilter(float Zfilterin) {
                  + ( C0 * Zyv[0]) + (  C1 * Zyv[1]);
   return Zyv[NPOLES];
 }
+
+void(* resetFunc) (void) = 0;

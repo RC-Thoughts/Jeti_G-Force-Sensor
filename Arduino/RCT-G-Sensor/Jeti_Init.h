@@ -5,7 +5,7 @@
 // Jetibox Start Screen
 //
 #define ABOUT_1 F(" RCT Jeti Tools")
-#define ABOUT_2 F(" G-Sensor  v1.3")
+#define ABOUT_2 F(" G-Sensor v1.4")
 
 //
 // Max screens in jetibox (navigating over this goes to start)

@@ -72,7 +72,7 @@ case 4 : {
     else if (FilterOnOff == 1) {
       strcat_P((char*)&msg_line1, (const char*)F("Filtered"));
     }
-    strcat_P((char*)&msg_line2, (const char*)F("Press Up/Dn"));
+    strcat_P((char*)&msg_line2, (const char*)F("Press Down"));
     JB.JetiBox((char*)&msg_line1, (char*)&msg_line2);
     break;
   }
@@ -85,21 +85,21 @@ case 5 : {
     if (Ndec == 2) {
       strcat_P((char*)&msg_line1, (const char*)F("0.00G"));
     }
-    strcat_P((char*)&msg_line2, (const char*)F("Press Up/Dn"));
+    strcat_P((char*)&msg_line2, (const char*)F("Press Down"));
     JB.JetiBox((char*)&msg_line1, (char*)&msg_line2);
     break;
   }
 case 6 : {
     msg_line1[0] = 0; msg_line2[0] = 0;
     strcat_P((char*)&msg_line1, (const char*)F("Restore Defaults"));
-    strcat_P((char*)&msg_line2, (const char*)F("Press Up & Dn"));
+    strcat_P((char*)&msg_line2, (const char*)F("Press Down"));
     JB.JetiBox((char*)&msg_line1, (char*)&msg_line2);
     break;
   }
 case 7 : {
     msg_line1[0] = 0; msg_line2[0] = 0;
     strcat_P((char*)&msg_line1, (const char*)F("Save Cur. Setup"));
-    strcat_P((char*)&msg_line2, (const char*)F("Press Up & Dn"));
+    strcat_P((char*)&msg_line2, (const char*)F("Press Down"));
     JB.JetiBox((char*)&msg_line1, (char*)&msg_line2);
     break;
   }

@@ -85,8 +85,6 @@ if ( (read != 240 ) && (read != 0) )
           Ndec--;
         }
       }
-      break;
-    case 144 : // UP+DOWN
       if (current_screen == 6) {
         // Store default values to eeprom
         xCalVal = 0;
@@ -100,6 +98,8 @@ if ( (read != 240 ) && (read != 0) )
         EEPROM.write(3, FilterOnOff);
         EEPROM.write(4, Ndec);
         current_screen == 99;
+        delay(1000);
+        resetFunc();
       }
       if (current_screen == 7) {
         // Store setup values to eeprom
@@ -109,7 +109,11 @@ if ( (read != 240 ) && (read != 0) )
         EEPROM.write(3, FilterOnOff);
         EEPROM.write(4, Ndec);
         current_screen == 99;
+        delay(1000);
+        resetFunc();
       }
+      break;
+    case 144 : // UP+DOWN
       break;
     case 96 : // LEFT+RIGHT
       break;
